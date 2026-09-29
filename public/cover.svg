@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="Ilustración de un vaso de líquido turquesa y el reto La Gota Exacta">
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#e9e5dc"/><stop offset="1" stop-color="#dcece6"/></linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a3efea"/><stop offset=".55" stop-color="#56c9c8"/><stop offset="1" stop-color="#188b96"/></linearGradient>
+    <linearGradient id="glass"><stop stop-color="#fff" stop-opacity=".8"/><stop offset=".48" stop-color="#fff" stop-opacity=".1"/><stop offset="1" stop-color="#fff" stop-opacity=".55"/></linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="15"/></filter>
+  </defs>
+  <rect width="1200" height="560" fill="url(#bg)"/>
+  <path d="M0 74h1200M0 490h1200" stroke="#bdc9bf"/>
+  <text x="65" y="51" font-family="Arial" font-size="14" font-weight="700" letter-spacing="4" fill="#215658">UNA-MAS-GAMES / 002</text>
+  <text x="65" y="164" font-family="Georgia" font-size="92" letter-spacing="-7" fill="#203b3a">La gota</text>
+  <text x="65" y="263" font-family="Georgia" font-style="italic" font-size="104" letter-spacing="-7" fill="#203b3a">exacta.</text>
+  <text x="71" y="323" font-family="Arial" font-size="22" fill="#687d75">Un vaso. Una cantidad. Un solo intento.</text>
+  <path d="M71 370h410" stroke="#abc1b7"/>
+  <text x="71" y="416" font-family="Arial" font-size="14" font-weight="700" letter-spacing="3" fill="#ac5947">SIRVE EXACTAMENTE</text>
+  <text x="69" y="479" font-family="Georgia" font-size="67" fill="#203b3a">125 ml</text>
+  <ellipse cx="888" cy="466" rx="183" ry="27" fill="#375a54" opacity=".17" filter="url(#blur)"/>
+  <ellipse cx="888" cy="472" rx="193" ry="36" fill="#e8eee8"/>
+  <path d="M763 127C760 229 775 386 791 452Q888 478 985 452C1002 386 1015 229 1013 127Z" fill="url(#glass)" stroke="#8baaa7" stroke-width="5"/>
+  <path d="M778 306Q888 317 998 306L984 448Q888 475 792 448Z" fill="url(#water)"/>
+  <ellipse cx="888" cy="306" rx="110" ry="20" fill="#a2ece5" opacity=".96"/>
+  <path d="M763 127Q888 94 1013 127Q888 158 763 127Z" fill="#ecf7f4" fill-opacity=".45" stroke="#8baaa7" stroke-width="5"/>
+  <path d="M794 165Q784 284 808 420" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="15" stroke-linecap="round"/>
+  <path d="M980 169Q987 278 975 386" fill="none" stroke="#fff" stroke-opacity=".32" stroke-width="8" stroke-linecap="round"/>
+  <path d="M888 24C881 38 869 52 869 62a19 19 0 0 0 38 0C907 52 895 38 888 24Z" fill="#52cac8"/>
+  <path d="M888 87v14" stroke="#52cac8" stroke-width="8" stroke-linecap="round"/>
+  <text x="1125" y="522" font-family="Arial" font-size="13" font-weight="700" letter-spacing="2" fill="#557c74">01 / 03</text>
+</svg>

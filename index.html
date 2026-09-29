@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#e9e5dc" />
+    <meta name="description" content="Una pausa, un vaso y un único intento. ¿Puedes servir la cantidad exacta?" />
+    <meta property="og:title" content="La Gota Exacta — UNA-MAS-GAMES" />
+    <meta property="og:description" content="Mantén pulsado para servir. Suelta cuando creas que llegaste a la cantidad exacta." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <title>La Gota Exacta · UNA-MAS-GAMES</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="topbar">
+        <a class="brand" href="https://github.com/goyoaga/la-gota-exacta" target="_blank" rel="noopener noreferrer" aria-label="La Gota Exacta en GitHub">
+          <span class="brand-icon" aria-hidden="true">◈</span>
+          <span>UNA-MAS-GAMES <span class="brand-separator">/</span> 002</span>
+        </a>
+        <button class="bookmark" id="bookmark" type="button" aria-label="Cómo guardar el juego en favoritos" title="Guardar en favoritos">☆ <span>GUARDAR</span></button>
+      </header>
+
+      <main class="layout">
+        <section class="intro" aria-labelledby="title">
+          <p class="eyebrow">UN JUEGO PARA UNA PAUSA</p>
+          <h1 id="title">La gota<br /><em>exacta.</em></h1>
+          <p class="intro-copy">Un vaso. Una cantidad. Un solo intento.</p>
+          <div class="target-card" aria-live="polite">
+            <span class="target-label">SIRVE EXACTAMENTE</span>
+            <span class="target-value"><span id="target">125</span><small> ml</small></span>
+            <span class="target-caption">VASO DE 250 ML</span>
+          </div>
+        </section>
+
+        <section class="experiment" aria-label="Vaso interactivo">
+          <div class="scene-wrap" id="scene-wrap">
+            <canvas id="scene" aria-hidden="true"></canvas>
+            <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>
+            <div class="scene-fallback" id="scene-fallback" hidden>
+              No se pudo abrir la vista 3D en este navegador. Prueba a activar la aceleración gráfica o abrir el juego en otro navegador.
+            </div>
+            <div class="scene-topline" aria-hidden="true"><span>EL EXPERIMENTO</span><span id="vessel-name">VASO RECTO</span></div>
+            <span class="scene-caption" id="scene-caption">EL NIVEL DEL VASO ES TU PISTA</span>
+          </div>
+        </section>
+
+        <section class="control-panel" aria-label="Controles y resultado">
+          <div class="control-heading"><span>01 — EL RETO</span><span>UN INTENTO</span></div>
+          <div id="ready-view" class="ready-view">
+            <p class="control-title">¿Cuándo vas a soltar?</p>
+            <p class="control-copy" id="how-to"><strong>1.</strong> Mantén pulsado el botón para llenar el vaso.<br /><strong>2.</strong> Suelta cuando creas que serviste <b id="instruction-target">125 ml</b>. Tienes un solo intento.</p>
+            <button id="pour" class="primary-button" type="button" aria-describedby="pour-hint">
+              <span id="pour-label">MANTÉN PULSADO AQUÍ</span><span aria-hidden="true" class="button-symbol">↓</span>
+            </button>
+            <p class="fineprint" id="pour-hint">Al soltar, el juego revela cuántos ml serviste. También puedes usar la barra espaciadora.</p>
+          </div>
+          <div id="result-view" class="result-view" hidden aria-live="polite">
+            <p class="result-kicker" id="result-kicker">EL VEREDICTO</p>
+            <h2 class="result-title" id="result-title">Casi perfecto.</h2>
+            <div class="result-stats">
+              <div><span>SERVISTE</span><strong id="actual">—</strong></div>
+              <div><span>OBJETIVO</span><strong id="result-target">—</strong></div>
+            </div>
+            <div class="difference"><span>DIFERENCIA</span><strong id="difference">—</strong><small id="direction">—</small></div>
+            <p class="best" id="best">MEJOR MARCA · —</p>
+            <button id="again" class="primary-button" type="button">OTRA RONDA <span aria-hidden="true" class="button-symbol">↗</span></button>
+            <a class="coffee" href="https://ko-fi.com/arielgoyoaga" target="_blank" rel="noopener noreferrer">¿TE DIVERTISTE? INVÍTAME UN CAFÉ ☕ ↗</a>
+          </div>
+          <div class="control-foot"><span>UN VASO · UNA DECISIÓN</span><span>© 2026</span></div>
+        </section>
+      </main>
+      <dialog id="bookmark-dialog" class="bookmark-dialog" aria-labelledby="bookmark-title">
+        <form method="dialog">
+          <button class="dialog-close" aria-label="Cerrar" type="submit">×</button>
+          <p class="eyebrow">VUELVE CUANDO QUIERAS</p>
+          <h2 id="bookmark-title">Guarda una<br /><em>partida más.</em></h2>
+          <p id="bookmark-instruction">Abre el menú de tu navegador y elige «Añadir a favoritos».</p>
+          <button class="dialog-done" type="submit">ENTENDIDO ↗</button>
+        </form>
+      </dialog>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
