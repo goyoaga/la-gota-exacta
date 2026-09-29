@@ -41,7 +41,7 @@ Una cantidad en **ml** aparece sobre un vaso transparente. Mantén pulsado para 
 - Una ronda, un solo vertido y vuelta a jugar sin menús ni cuenta.
 - Líquido **azul turquesa translúcido** y vasos 3D con volumen y altura coherentes.
 - Controles táctiles, ratón y barra espaciadora; veredicto como texto fuera del lienzo 3D.
-- El botón de altavoz comienza en **OFF**. Al tocarlo pasa a **ON** y reproduce una prueba breve de burbujas tipo «glup, glup»; después, acompaña el vertido y se detiene al soltar. Puedes apagarlo con el mismo botón. Al volver a abrir la página comienza en OFF por las restricciones de audio móvil.
+- El botón de altavoz comienza en **OFF**. Al tocarlo pasa a **ON** y reproduce una prueba breve de burbujas tipo «glup, glup»; después, acompaña el vertido y se detiene al soltar. El sonido procede de un archivo MP3 original y ligero (~35 KB), reproducido por un elemento de audio compatible con móviles. Puedes apagarlo con el mismo botón. Al volver a abrir la página comienza en OFF por las restricciones de audio móvil.
 - Botón ☆ para aprender a guardarlo en favoritos. El navegador debe confirmar el marcador: una web no puede hacerlo sola.
 - Sin publicidad, backend ni recopilación de datos personales en el juego.
 

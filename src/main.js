@@ -5,7 +5,7 @@ import { createPourAudio } from './audio.js';
 
 const $ = (id) => document.getElementById(id);
 const refs = {
-  canvas: $('scene'), sceneWrap: $('scene-wrap'), confetti: $('confetti-layer'), fallback: $('scene-fallback'),
+  canvas: $('scene'), sceneWrap: $('scene-wrap'), confetti: $('confetti-layer'), fallback: $('scene-fallback'), audio: $('pour-audio'),
   target: $('target'), instructionTarget: $('instruction-target'), vesselName: $('vessel-name'), caption: $('scene-caption'),
   pour: $('pour'), pourLabel: $('pour-label'), ready: $('ready-view'),
   result: $('result-view'), resultKicker: $('result-kicker'),
@@ -16,7 +16,7 @@ const refs = {
 };
 const format = (value) => new Intl.NumberFormat('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(value);
 const STORAGE_KEY = 'la-gota-exacta-best-v1';
-const pourAudio = createPourAudio();
+const pourAudio = createPourAudio(refs.audio);
 let soundEnabled = false;
 function updateSoundButton() {
   refs.soundLabel.textContent = soundEnabled ? 'ON' : 'OFF';
