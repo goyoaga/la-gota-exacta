@@ -11,7 +11,7 @@ const refs = {
   result: $('result-view'), resultKicker: $('result-kicker'),
   resultTitle: $('result-title'), actual: $('actual'), resultTarget: $('result-target'),
   difference: $('difference'), direction: $('direction'), best: $('best'),
-  again: $('again'), bookmark: $('bookmark'), sound: $('sound'), dialog: $('bookmark-dialog'),
+  again: $('again'), bookmark: $('bookmark'), sound: $('sound'), soundLabel: $('sound-label'), dialog: $('bookmark-dialog'),
   instruction: $('bookmark-instruction'),
 };
 const format = (value) => new Intl.NumberFormat('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(value);
@@ -19,8 +19,9 @@ const STORAGE_KEY = 'la-gota-exacta-best-v1';
 const pourAudio = createPourAudio();
 let soundEnabled = false;
 function updateSoundButton() {
-  refs.sound.textContent = soundEnabled ? '♫ ON' : '♫ ACTIVAR';
-  refs.sound.setAttribute('aria-label', soundEnabled ? 'Desactivar sonido del líquido' : 'Activar sonido del líquido y probarlo');
+  refs.soundLabel.textContent = soundEnabled ? 'ON' : 'OFF';
+  refs.sound.classList.toggle('is-muted', !soundEnabled);
+  refs.sound.setAttribute('aria-label', soundEnabled ? 'Desactivar sonido del líquido' : 'Activar sonido del líquido');
   refs.sound.setAttribute('aria-pressed', String(soundEnabled));
 }
 updateSoundButton();

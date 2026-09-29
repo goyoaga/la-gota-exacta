@@ -25,7 +25,10 @@ button:focus-visible, a:focus-visible { outline: 3px solid #c17057; outline-offs
 .brand-icon { background: #174e50; color: #bceae0; width: 29px; height: 29px; display: inline-grid; place-items: center; font-size: 19px; border-radius: 5px; letter-spacing: 0; }
 .brand-separator { color: #a5a69d; padding: 0 5px; }
 .topbar-actions { display: flex; align-items: center; gap: 8px; }
-.sound-toggle { border: 1px solid #a8aaa0; background: transparent; color: #33413d; min-height: 42px; padding: 7px 12px; font-size: 11px; font-weight: 800; letter-spacing: .08em; white-space: nowrap; }
+.sound-toggle { border: 1px solid #a8aaa0; background: transparent; color: #33413d; min-height: 42px; padding: 7px 12px; display: inline-flex; align-items: center; justify-content: center; gap: 5px; font-size: 11px; font-weight: 800; letter-spacing: .08em; white-space: nowrap; }
+.sound-toggle svg { flex: none; }
+.sound-toggle .sound-slash, .sound-toggle.is-muted .sound-wave { display: none; }
+.sound-toggle.is-muted .sound-slash { display: inline; }
 .sound-toggle:hover { background: #f8f6ef; }
 .bookmark { border: 1px solid #a8aaa0; background: transparent; color: #a94d40; min-width: 102px; min-height: 42px; padding: 7px 12px; display: flex; gap: 7px; align-items: center; justify-content: center; font-size: 21px; line-height: 1; }
 .bookmark span { font-size: 10px; font-weight: 800; letter-spacing: .13em; color: #33413d; }
