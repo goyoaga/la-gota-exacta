@@ -41,7 +41,7 @@ Una cantidad en **ml** aparece sobre un vaso transparente. Mantén pulsado para 
 - Una ronda, un solo vertido y vuelta a jugar sin menús ni cuenta.
 - Líquido **azul turquesa translúcido** y vasos 3D con volumen y altura coherentes.
 - Controles táctiles, ratón y barra espaciadora; veredicto como texto fuera del lienzo 3D.
-- Sonido suave de líquido generado en el navegador al mantener pulsado; se detiene al soltar. El botón ♫ permite silenciarlo y recuerda la preferencia en el navegador.
+- Toca **♫ ACTIVAR** una vez antes de jugar: escucharás una prueba breve. Después, el sonido de líquido acompaña el vertido y se detiene al soltar. Puedes apagarlo con el mismo botón; al volver a abrir la página tendrás que activarlo de nuevo por las restricciones de audio móvil.
 - Botón ☆ para aprender a guardarlo en favoritos. El navegador debe confirmar el marcador: una web no puede hacerlo sola.
 - Sin publicidad, backend ni recopilación de datos personales en el juego.
 

@@ -16,21 +16,22 @@ const refs = {
 };
 const format = (value) => new Intl.NumberFormat('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(value);
 const STORAGE_KEY = 'la-gota-exacta-best-v1';
-const SOUND_KEY = 'la-gota-exacta-sound-v1';
 const pourAudio = createPourAudio();
-let soundEnabled = true;
-try { soundEnabled = localStorage.getItem(SOUND_KEY) !== 'off'; } catch { /* Storage is optional. */ }
+let soundEnabled = false;
 function updateSoundButton() {
-  refs.sound.textContent = soundEnabled ? '♫ ON' : '♫ OFF';
-  refs.sound.setAttribute('aria-label', soundEnabled ? 'Desactivar sonido del líquido' : 'Activar sonido del líquido');
+  refs.sound.textContent = soundEnabled ? '♫ ON' : '♫ ACTIVAR';
+  refs.sound.setAttribute('aria-label', soundEnabled ? 'Desactivar sonido del líquido' : 'Activar sonido del líquido y probarlo');
   refs.sound.setAttribute('aria-pressed', String(soundEnabled));
 }
 updateSoundButton();
-refs.sound.addEventListener('click', () => {
-  soundEnabled = !soundEnabled;
-  try { localStorage.setItem(SOUND_KEY, soundEnabled ? 'on' : 'off'); } catch { /* Session preference. */ }
-  if (soundEnabled && state === 'pouring') pourAudio.start();
-  else pourAudio.stop();
+refs.sound.addEventListener('click', async () => {
+  if (soundEnabled) {
+    soundEnabled = false;
+    pourAudio.stop();
+  } else {
+    soundEnabled = await pourAudio.activate();
+    if (soundEnabled && state === 'pouring') pourAudio.start();
+  }
   updateSoundButton();
 });
 let best = null;

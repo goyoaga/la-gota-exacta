@@ -14,7 +14,8 @@ export function createPourAudio() {
     let ripple = 0;
     for (let i = 0; i < length; i += 1) {
       ripple = ripple * 0.78 + (Math.random() * 2 - 1) * 0.22;
-      samples[i] = ripple * 0.7 + (Math.random() * 2 - 1) * 0.13;
+      // Keep enough midrange energy for small phone speakers.
+      samples[i] = ripple * 0.9 + (Math.random() * 2 - 1) * 0.42;
     }
     // Irregular, quiet drops give the continuous stream a liquid character.
     for (let i = 0; i < 30; i += 1) {
@@ -25,6 +26,12 @@ export function createPourAudio() {
         const t = j / context.sampleRate;
         samples[start + j] += Math.sin(2 * Math.PI * frequency * t) * Math.exp(-95 * t) * 0.13;
       }
+    }
+    // Crossfade the seam so looping never creates a click.
+    const overlap = Math.floor(context.sampleRate * 0.008);
+    for (let i = 0; i < overlap; i += 1) {
+      const blend = i / overlap;
+      samples[length - overlap + i] = samples[length - overlap + i] * (1 - blend) + samples[i] * blend;
     }
     return water;
   }
@@ -54,10 +61,10 @@ export function createPourAudio() {
       source.loop = true;
       const filter = context.createBiquadFilter();
       filter.type = 'lowpass';
-      filter.frequency.value = 1350;
+      filter.frequency.value = 3200;
       output = context.createGain();
       output.gain.setValueAtTime(0, context.currentTime);
-      output.gain.linearRampToValueAtTime(0.19, context.currentTime + 0.08);
+      output.gain.linearRampToValueAtTime(0.72, context.currentTime + 0.08);
       source.connect(filter).connect(output).connect(context.destination);
       source.start();
     } catch (error) {
@@ -67,5 +74,31 @@ export function createPourAudio() {
     }
   }
 
-  return { start, stop };
+  // The explicit tap on the sound button unlocks mobile audio before the hold.
+  // A short preview confirms immediately that the device can play it.
+  async function activate() {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContextClass) return false;
+    try {
+      context ??= new AudioContextClass();
+      buffer ??= makeBuffer();
+      await context.resume();
+      const preview = context.createBufferSource();
+      const level = context.createGain();
+      preview.buffer = buffer;
+      level.gain.setValueAtTime(0, context.currentTime);
+      level.gain.linearRampToValueAtTime(0.72, context.currentTime + 0.04);
+      level.gain.setValueAtTime(0.72, context.currentTime + 0.28);
+      level.gain.linearRampToValueAtTime(0, context.currentTime + 0.38);
+      preview.connect(level).connect(context.destination);
+      preview.start();
+      preview.stop(context.currentTime + 0.39);
+      return true;
+    } catch (error) {
+      console.warn('No se pudo activar el audio', error);
+      return false;
+    }
+  }
+
+  return { activate, start, stop };
 }
