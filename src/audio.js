@@ -1,4 +1,4 @@
-// A short, synthesized water loop keeps the game free of external audio files.
+// A short, synthesized bubbling loop keeps the game free of external audio files.
 // The AudioContext is created only after a user gesture, as mobile browsers require.
 export function createPourAudio() {
   let context;
@@ -7,24 +7,32 @@ export function createPourAudio() {
   let output;
 
   function makeBuffer() {
-    const seconds = 2;
+    const seconds = 2.4;
     const length = Math.round(context.sampleRate * seconds);
     const water = context.createBuffer(1, length, context.sampleRate);
     const samples = water.getChannelData(0);
     let ripple = 0;
     for (let i = 0; i < length; i += 1) {
-      ripple = ripple * 0.78 + (Math.random() * 2 - 1) * 0.22;
-      // Keep enough midrange energy for small phone speakers.
-      samples[i] = ripple * 0.9 + (Math.random() * 2 - 1) * 0.42;
+      ripple = ripple * 0.92 + (Math.random() * 2 - 1) * 0.08;
+      // Just a hint of water between bubbles, rather than a steady tap hiss.
+      samples[i] = ripple * 0.045;
     }
-    // Irregular, quiet drops give the continuous stream a liquid character.
-    for (let i = 0; i < 30; i += 1) {
-      const start = Math.floor(Math.random() * (length - context.sampleRate * 0.045));
-      const frequency = 480 + Math.random() * 420;
-      const duration = Math.floor(context.sampleRate * 0.04);
+    // Each rounded, downward pitch sweep sounds like one bottle-neck "glup".
+    const bubbles = [0.04, 0.28, 0.52, 0.75, 1.00, 1.24, 1.47, 1.71, 1.95, 2.18];
+    for (let i = 0; i < bubbles.length; i += 1) {
+      const start = Math.floor(bubbles[i] * context.sampleRate);
+      const durationSeconds = 0.17;
+      const duration = Math.floor(context.sampleRate * durationSeconds);
+      const from = 520 + (i % 3) * 36 + Math.random() * 24;
+      const to = 230 + (i % 4) * 18;
       for (let j = 0; j < duration; j += 1) {
         const t = j / context.sampleRate;
-        samples[start + j] += Math.sin(2 * Math.PI * frequency * t) * Math.exp(-95 * t) * 0.13;
+        const attack = Math.min(1, t / 0.012);
+        const envelope = attack * Math.exp(-17 * t);
+        const phase = 2 * Math.PI * (from * t + (to - from) * t * t / (2 * durationSeconds));
+        const tone = Math.sin(phase) * 0.78 + Math.sin(2 * phase) * 0.16;
+        const tinySplash = (Math.random() * 2 - 1) * 0.11;
+        samples[start + j] += envelope * (tone + tinySplash);
       }
     }
     // Crossfade the seam so looping never creates a click.
@@ -64,7 +72,7 @@ export function createPourAudio() {
       filter.frequency.value = 3200;
       output = context.createGain();
       output.gain.setValueAtTime(0, context.currentTime);
-      output.gain.linearRampToValueAtTime(0.72, context.currentTime + 0.08);
+      output.gain.linearRampToValueAtTime(0.9, context.currentTime + 0.08);
       source.connect(filter).connect(output).connect(context.destination);
       source.start();
     } catch (error) {
@@ -87,8 +95,8 @@ export function createPourAudio() {
       const level = context.createGain();
       preview.buffer = buffer;
       level.gain.setValueAtTime(0, context.currentTime);
-      level.gain.linearRampToValueAtTime(0.72, context.currentTime + 0.04);
-      level.gain.setValueAtTime(0.72, context.currentTime + 0.28);
+      level.gain.linearRampToValueAtTime(0.9, context.currentTime + 0.04);
+      level.gain.setValueAtTime(0.9, context.currentTime + 0.28);
       level.gain.linearRampToValueAtTime(0, context.currentTime + 0.38);
       preview.connect(level).connect(context.destination);
       preview.start();
