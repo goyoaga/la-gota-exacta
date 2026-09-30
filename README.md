@@ -45,12 +45,11 @@ Una cantidad en **ml** aparece sobre un vaso transparente. Mantén pulsado para 
 - Botón ☆ para aprender a guardarlo en favoritos. El navegador debe confirmar el marcador: una web no puede hacerlo sola.
 - Sin publicidad, backend ni recopilación de datos personales en el juego.
 
-## Jugar y publicar
+## Jugar
 
-**Repositorio:** https://github.com/goyoaga/la-gota-exacta  
-**Juego (tras activar Pages):** https://goyoaga.github.io/la-gota-exacta/
+**[Abrir La Gota Exacta](https://goyoaga.github.io/la-gota-exacta/)** · gratis y sin registro.
 
-Para publicar: entra en **Settings → Pages → Build and deployment → Source: GitHub Actions**. Después ejecuta **Actions → Publicar en GitHub Pages → Run workflow** (o envía un nuevo commit a `main`). La compilación usa la ruta base `/la-gota-exacta/` y publica el contenido de `dist`. Espera el estado verde y abre la URL del juego para comprobar una ronda.
+El código del proyecto está en [GitHub](https://github.com/goyoaga/la-gota-exacta).
 
 ### Ejecutar en local
 
