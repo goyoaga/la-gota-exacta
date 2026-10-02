@@ -137,7 +137,8 @@ h1 em, h2 em { font-weight: 400; }
   .scene-topline { top: 14px; left: 19px; right: 19px; font-size: 8px; }
   .scene-caption { bottom: 9px; font-size: 8px; padding: 7px 10px; }
   .control-panel { min-height: 0; padding: 13px 22px max(14px, env(safe-area-inset-bottom)); border-top: 1px solid #c9c9bf; }
-  .control-heading, .control-foot { display: none; }
+  .control-heading { display: none; }
+  .control-foot { display: flex; margin-top: 12px; padding-top: 10px; font-size: 8px; align-items: center; }
   .ready-view, .result-view { padding: 0; }
   .control-title { display: none; }
   .control-copy { color: #334b47; margin: 0 0 12px; font-size: 13px; line-height: 1.38; font-weight: 600; }
