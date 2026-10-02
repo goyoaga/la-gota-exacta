@@ -83,6 +83,6 @@ El contador interno avanza a 25 ml por segundo de pulsación activa. La pestaña
 
 <div align="center">
 
-Hecho para **UNA-MAS-GAMES** · una partida más y seguimos.
+Hecho para **UNAMAS GAMES** · una partida más y seguimos.
 
 </div>
